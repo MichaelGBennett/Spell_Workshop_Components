@@ -1,0 +1,78 @@
+{"components": {
+  "feather": {"shapes": {
+    "flight": 5,
+    "air": 5
+  }},
+  "firefly": {"shapes": {
+    "flight": 5,
+    "light": 5,
+    "life": 5
+  }},
+  "mercury": {"shapes": {
+    "death": 5,
+    "exchange": 5,
+    "illusion": 5
+  }},
+  "glowworm": {"shapes": {
+    "light": 5,
+    "earth": 5,
+    "life": 5
+  }},
+  "thread": {"shapes": {
+    "fate": 5,
+    "fix": 5
+  }},
+  "snail shell": {"shapes": {
+    "death": 5,
+    "loop": 5,
+    "life": 5
+  }},
+  "blood": {"shapes": {
+    "death": 5,
+    "life": 5
+  }},
+  "rotten food": {"shapes": {
+    "death": 5,
+    "decay": 5
+  }},
+  "sand": {"shapes": {
+    "earth": 5,
+    "time": 5
+  }},
+  "loadstone": {"shapes": {
+    "atraction": 10,
+    "direction": 5
+  }},
+  "fly trap": {"shapes": {
+    "conditional": 5,
+    "plant": 5,
+    "life": 5
+  }},
+  "cricket": {"shapes": {
+    "morality": 5,
+    "sound": 5,
+    "time": 5
+  }},
+  "leather patch": {"shapes": {
+    "death": 5,
+    "protection": 5
+  }},
+  "wood": {"shapes": {
+    "plant": 5,
+    "structure": 5
+  }},
+  "dragon scale": {"shapes": {
+    "wealth": 5,
+    "greed": 5,
+    "protection": 5
+  }},
+  "shamrock leaf": {"shapes": {
+    "luck": 5,
+    "plant": 5
+  }},
+  "coin": {"shapes": {"exchange": 5}},
+  "phosphorus": {"shapes": {
+    "explosion": 5,
+    "light": 5
+  }}
+}}
