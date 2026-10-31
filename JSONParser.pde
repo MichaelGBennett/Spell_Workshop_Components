@@ -38,4 +38,8 @@ class JSONParser{
   void saveJSON(){
     saveJSONObject(json, path);
   }
+  
+  String getTree(){
+    return json.toString();
+  }
 }

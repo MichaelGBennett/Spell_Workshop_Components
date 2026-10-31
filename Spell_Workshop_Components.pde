@@ -1,6 +1,7 @@
 JSONParser parser;
 String componentName = "";
 String shapeList = "";
+int textSize = 16;
 
 int boxPadding = 3;
 
@@ -26,20 +27,35 @@ int saveButtonY = 460;
 int saveButtonWidth = 50;
 int saveButtonHeight = 30;
 
+int displayBoxX = 220;
+int displayBoxY = 10;
+int displayBoxWidth = 400;
+int displayBoxHeight = 440;
+int displayScrollY = 0;
+
+PGraphics displayScrollBox;
+
+int bgBrightness = 80;
 
 void setup(){
   parser = new JSONParser();
   parser.loadJSON();
   
-  textSize(16);
+  displayScrollBox = createGraphics(displayBoxWidth - boxPadding, displayBoxHeight - boxPadding);
   
-  size(220,600);
+  textSize(textSize);
+  
+  size(630,600);
 }
 
 void draw(){
+  background(bgBrightness);
+  bgBrightness --;
+  bgBrightness = bgBrightness < 80 ? 80 : bgBrightness;
   
   rect(nameBoxX, nameBoxY, nameWidth, nameHeight);
   rect(shapeBoxX, shapeBoxY, shapeBoxWidth, shapeBoxHeight);
+  rect(displayBoxX, displayBoxY, displayBoxWidth, displayBoxHeight);
   
   rect(addButtonX, addButtonY, addButtonWidth, addButtonHeight);
   rect(saveButtonX, saveButtonY, saveButtonWidth, saveButtonHeight);
@@ -53,12 +69,14 @@ void draw(){
   text(shapeList, shapeBoxX + boxPadding, shapeBoxY + boxPadding, shapeBoxWidth - boxPadding, shapeBoxHeight - boxPadding);
   fill(255);
   
-  //parser.addComponent("snail shell");
-  //JSONObject snailShapes = parser.getShapes("snail shell");
-  //parser.addShape(snailShapes, "loop", 5);
-  //parser.addShape(snailShapes, "life", 1);
-  //parser.addShape(snailShapes, "death", 1);
-  //println(parser.getComponents());
+  displayScrollBox.beginDraw();
+  displayScrollBox.background(255);
+  displayScrollBox.textSize(textSize);
+  displayScrollBox.fill(0);
+  displayScrollBox.text(parser.getTree(), 0, displayScrollY);
+  displayScrollBox.fill(255);
+  displayScrollBox.endDraw();
+  image(displayScrollBox, displayBoxX + boxPadding, displayBoxY + boxPadding, displayBoxWidth - boxPadding, displayBoxHeight - boxPadding);
 }
 
 void keyPressed() {
@@ -127,8 +145,13 @@ void mouseClicked(){
     if (mouseY >= saveButtonY && mouseY <= saveButtonY + saveButtonHeight){
       parser.saveJSON();
       println("Saved!");
+      bgBrightness = 200;
     }
   }
+}
+
+void mouseWheel(MouseEvent event){
+  displayScrollY += event.getCount() * -10;
 }
 
 void addToJSON(){
@@ -138,5 +161,4 @@ void addToJSON(){
   for (String shape: shapes){
     parser.addShape(shapesJSON, shape.trim(), 5);
   }
-  println(parser.getComponents());
 }
